@@ -332,6 +332,8 @@ if 'prediction_count' not in st.session_state:
     st.session_state.prediction_count = 0
 if 'last_prediction' not in st.session_state:
     st.session_state.last_prediction = None
+if 'page' not in st.session_state:
+    st.session_state.page = "🏠 Home"
 
 # ─────────────────────────────────────────
 # ENCODING MAPS
@@ -384,8 +386,12 @@ with st.sidebar:
     page = st.radio(
         "Navigation",
         ["🏠 Home", "🔮 Predict", "📊 Analytics", "💬 Ask AI"],
-        label_visibility="collapsed"
+        label_visibility="collapsed",
+        index=["🏠 Home", "🔮 Predict", 
+               "📊 Analytics", "💬 Ask AI"].index(
+                   st.session_state.page)
     )
+    st.session_state.page = page
 
     st.markdown("---")
 
@@ -542,6 +548,7 @@ if page == "🏠 Home":
     st.markdown("<br>", unsafe_allow_html=True)
 
     # CTA
+    # CTA + Mobile Navigation
     st.markdown("""
     <div style='text-align:center;padding:30px;
                 background:#0d1117;border:1px solid #1e2438;
@@ -552,11 +559,10 @@ if page == "🏠 Home":
         </p>
         <p style='font-size:14px;color:#6b7280;margin:0 0 16px;
                   font-family:Space Grotesk,sans-serif'>
-            Click <b style='color:#818cf8'>🔮 Predict</b> in the
-            sidebar to get started. Free. Instant. No signup needed.
+            Free. Instant. No signup needed.
         </p>
         <div style='display:inline-flex;gap:16px;flex-wrap:wrap;
-                    justify-content:center'>
+                    justify-content:center;margin-bottom:16px'>
             <span style='background:rgba(99,102,241,0.1);
                         border:1px solid rgba(99,102,241,0.2);
                         border-radius:8px;padding:8px 16px;
@@ -576,8 +582,38 @@ if page == "🏠 Home":
                 ✓ Actionable insights
             </span>
         </div>
+        <p style='font-size:12px;color:#4b5563;margin:0;
+                  font-family:Space Grotesk,sans-serif'>
+            On mobile? Use the buttons below to navigate ↓
+        </p>
     </div>
     """, unsafe_allow_html=True)
+
+    # Mobile navigation buttons
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("""
+    <p style='text-align:center;font-size:12px;font-weight:600;
+              color:#6366f1;letter-spacing:3px;text-transform:uppercase;
+              font-family:Space Grotesk,sans-serif;margin-bottom:16px'>
+        Quick Navigation
+    </p>""", unsafe_allow_html=True)
+
+    mob1, mob2, mob3 = st.columns(3)
+
+    with mob1:
+        if st.button("🔮 Predict Delay", use_container_width=True):
+            st.session_state.page = "🔮 Predict"
+            st.rerun()
+
+    with mob2:
+        if st.button("📊 Analytics", use_container_width=True):
+            st.session_state.page = "📊 Analytics"
+            st.rerun()
+
+    with mob3:
+        if st.button("💬 Ask AI", use_container_width=True):
+            st.session_state.page = "💬 Ask AI"
+            st.rerun()
 
 # ═══════════════════════════════════════
 # PAGE 2 — PREDICT
