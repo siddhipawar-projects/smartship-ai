@@ -82,10 +82,14 @@ section[data-testid="stSidebar"] p {
 /* Selectbox */
 .stSelectbox > div > div {
     background-color: #0d1117;
-    border: 1px solid #1e2438;
+    border: 1px solid #6366f1 !important;
     border-radius: 8px;
-    color: white;
+    color: white !important;
 }
+.stSelectbox > div > div > div {
+    color: white !important;
+}
+            
 /* Slider */
 .stSlider > div > div > div {
     background: linear-gradient(90deg, #6366f1, #a855f7) !important;
@@ -839,11 +843,13 @@ elif page == "📊 Analytics":
         fig, ax = plt.subplots(figsize=figsize)
         fig.patch.set_facecolor('#0d1117')
         ax.set_facecolor('#0d1117')
-        ax.tick_params(colors='#6b7280', labelsize=10)
-        ax.spines['bottom'].set_color('#1e2438')
+        ax.tick_params(colors='#ffffff', labelsize=10)
+        ax.xaxis.label.set_color('#ffffff')
+        ax.yaxis.label.set_color('#ffffff')
+        ax.spines['bottom'].set_color('#4b5563')
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
-        ax.spines['left'].set_color('#1e2438')
+        ax.spines['left'].set_color('#4b5563')
         ax.grid(axis='x', color='#1e2438', linewidth=0.5)
         return fig, ax
 
