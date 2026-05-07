@@ -7,4 +7,3 @@ __pycache__/
 data/DataCoSupplyChainDataset.csv
 data/tokenized_access_logs.csv
 data/DescriptionDataCoSupplyChain.csv
-models/best_model.pkl
