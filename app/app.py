@@ -52,6 +52,23 @@ html, body, [class*="css"] {
 [data-testid="stSidebar"] * {
     color: #a0aec0 !important;
 }
+/* Fix input labels */
+.stSelectbox label, 
+.stSlider label,
+label[data-testid="stWidgetLabel"] {
+    color: #d1d5db !important;
+}
+
+/* Fix all text in main area */
+.stMarkdown p {
+    color: #d1d5db !important;
+}
+
+/* Fix chart axes */
+.matplotlib-figure text {
+    color: #ffffff !important;
+}
+            
 [data-testid="stSidebar"] .stRadio [data-testid="stMarkdownContainer"] p {
     color: #a0aec0 !important;
 }
@@ -395,7 +412,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("""
     <div style='font-size:11px;color:#374151'>
-        Built by Siddhi Chavan<br>
+        Built by Siddhi Pawar<br>
         Supply Chain ML Project · 2025
     </div>
     """, unsafe_allow_html=True)
