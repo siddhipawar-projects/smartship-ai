@@ -15,7 +15,8 @@ SmartShip AI predicts shipment delay risk at the moment of order placement, givi
 
 ## Live Demo
 
-Launch SmartShip AI — deployment link coming soon
+Live App: https://smartship-ai-supplychain.streamlit.app/
+
 
 ---
 
