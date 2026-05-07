@@ -4,6 +4,7 @@ import numpy as np
 import pickle
 import os
 import matplotlib.pyplot as plt
+from sklearn.preprocessing import LabelEncoder
 import matplotlib
 matplotlib.use('Agg')
 
@@ -899,6 +900,11 @@ elif page == "📊 Analytics":
             0: 'First Class', 1: 'Same Day',
             2: 'Second Class', 3: 'Standard Class'
         }
+        # Verify actual encoding from training
+        
+        le = LabelEncoder()
+        le.fit(['First Class', 'Same Day', 'Second Class', 'Standard Class'])
+        shipping_labels = {i: label for i, label in enumerate(le.classes_)}
         delay_mode = df.groupby('Shipping Mode')['Late_delivery_risk'].mean() * 100
         delay_mode.index = delay_mode.index.map(shipping_labels)
         delay_mode = delay_mode.sort_values(ascending=True)
